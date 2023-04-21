@@ -2,6 +2,8 @@ import threading
 import time
 import random
 from colorama import Fore, Back, Style
+
+
 def ejecutar():
     papel = 0
     tabaco = 1
@@ -16,6 +18,7 @@ def ejecutar():
     turno_fumador = threading.Event()
     terminar_evento = threading.Event()
     mostrar = True
+
     def poner_ingredientes():
         while not terminar_evento.is_set():
             ing1, ing2 = random.sample(range(ingredientes_necesarios), 2)
@@ -23,7 +26,6 @@ def ejecutar():
             ingredientes[ing2] = True
             turno.clear()
             turno_fumador.set()
-
 
     def fumar(num):
         while not terminar_evento.is_set():
@@ -40,9 +42,8 @@ def ejecutar():
                     time.sleep(3)
                 turno_fumador.clear()
 
-
     hilos = [threading.Thread(target=fumar, args=(i,))
-            for i in range(num_fumadores)]
+             for i in range(num_fumadores)]
     hilo_principal = threading.Thread(target=poner_ingredientes)
 
     for hilo in hilos:
@@ -55,7 +56,6 @@ def ejecutar():
 
     for hilo in hilos:
         hilo.join()
-
 
 
 if __name__ == '__main__':
