@@ -5,7 +5,8 @@ from colorama import Fore, Back, Style
 
 
 def ejecutar():
-    diccionario = {0: "papel", 1: "tabaco", 2: "filtros", 3: "green", 4: "cerillas"}
+    diccionario = {0: "papel", 1: "tabaco",
+                   2: "filtros", 3: "green", 4: "cerillas"}
     num_fumadores = 5
     ingredientes_necesarios = 5
     mutex = threading.Lock()
@@ -13,7 +14,6 @@ def ejecutar():
     turno = threading.Event()
     turno_fumador = threading.Event()
     terminar_evento = threading.Event()
-    mostrar = True
 
     def poner_ingredientes():
         while not terminar_evento.is_set():
