@@ -46,3 +46,11 @@ hilo_principal = threading.Thread(target=poner_ingredientes)
 
 for hilo in hilos:
     hilo.start()
+
+hilo_principal.start()
+time.sleep(10)
+terminar_evento.set()
+hilo_principal.join()
+
+for hilo in hilos:
+    hilo.join()
