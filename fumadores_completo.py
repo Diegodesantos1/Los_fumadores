@@ -39,3 +39,10 @@ def fumar(num):
                     turno.set()
                     time.sleep(3)
                 turno_fumador.clear()
+
+hilos = [threading.Thread(target=fumar, args=(i,))
+    for i in range(num_fumadores)]
+hilo_principal = threading.Thread(target=poner_ingredientes)
+
+for hilo in hilos:
+    hilo.start()
