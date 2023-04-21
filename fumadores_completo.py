@@ -24,3 +24,18 @@ def poner_ingredientes():
         ingredientes[ing2] = True
         turno.clear()
         turno_fumador.set()
+
+def fumar(num):
+        while not terminar_evento.is_set():
+            turno_fumador.wait()
+            with mutex:
+                if all(ingredientes):
+                    print(
+                        Fore.RED + f"Fumador {num} está fumando..." + Style.RESET_ALL)
+                    time.sleep(3)
+                    ingredientes[0] = ingredientes[1] = ingredientes[2] = ingredientes[3] = ingredientes[4] = False
+                    print(
+                        Fore.RED + f"Fumador {num} ha terminado de fumar" + Style.RESET_ALL)
+                    turno.set()
+                    time.sleep(3)
+                turno_fumador.clear()
