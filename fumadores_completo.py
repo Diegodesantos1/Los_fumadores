@@ -15,3 +15,12 @@ ingredientes = [False] * ingredientes_necesarios
 turno = threading.Event()
 turno_fumador = threading.Event()
 terminar_evento = threading.Event()
+
+def poner_ingredientes():
+    while not terminar_evento.is_set():
+        ing1, ing2 = random.sample(range(ingredientes_necesarios), 2)
+        print(f"Agente pone {ing1} y {ing2} en la mesa")
+        ingredientes[ing1] = True
+        ingredientes[ing2] = True
+        turno.clear()
+        turno_fumador.set()
