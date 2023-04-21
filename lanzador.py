@@ -1,4 +1,3 @@
-
 import fumadores_completo as fumadores
 import fumadores_simple as fumadores_simple
 from introducir.numero import solicitar_introducir_numero_extremo
