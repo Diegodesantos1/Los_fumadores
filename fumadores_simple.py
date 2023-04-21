@@ -5,11 +5,7 @@ from colorama import Fore, Back, Style
 
 
 def ejecutar():
-    papel = 0
-    tabaco = 1
-    filtros = 2
-    green = 3
-    cerillas = 4
+    diccionario = {0: "papel", 1: "tabaco", 2: "filtros", 3: "green", 4: "cerillas"}
     num_fumadores = 5
     ingredientes_necesarios = 5
     mutex = threading.Lock()
